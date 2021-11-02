@@ -1,5 +1,8 @@
 package ru.vsu.csf.Sashina;
 
+import ru.vsu.csf.Sashina.game.GameLogic;
+import ru.vsu.csf.Sashina.player.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
