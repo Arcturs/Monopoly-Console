@@ -29,7 +29,7 @@ public class Console extends GameLogic {
     }
 
     @Override
-    protected void gameMenu(Player player, boolean[] actions) {
+    public void gameMenu(Player player, boolean[] actions) {
         super.gameMenu(player, actions);
 
         int action = scan.nextInt();
@@ -42,7 +42,7 @@ public class Console extends GameLogic {
     }
 
     @Override
-    protected void getStreetOnBail(Player player) {
+    public void getStreetOnBail(Player player) {
         super.getStreetOnBail(player);
         String colour = scan.next();
         super.setStreetOnBail(colour, player);
@@ -64,7 +64,7 @@ public class Console extends GameLogic {
     }
 
     @Override
-    protected void sendMessage(String message) {
+    public void sendMessage(String message) {
         System.out.println(message);
     }
 }
