@@ -1,5 +1,7 @@
 package ru.vsu.csf.Sashina;
 
+import ru.vsu.csf.Sashina.game.GameBoard;
+import ru.vsu.csf.Sashina.game.GameInterface;
 import ru.vsu.csf.Sashina.game.GameLogic;
 import ru.vsu.csf.Sashina.player.Player;
 
@@ -7,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Console extends GameLogic {
+public class Console implements GameInterface {
 
     Scanner scan = new Scanner(System.in);
+    GameLogic game = new GameLogic(this);
 
     public void startGame() {
         System.out.print("How many players: ");
@@ -24,31 +27,25 @@ public class Console extends GameLogic {
         System.out.println();
         System.out.println("__________________________________________________");
         System.out.println();
-        setPlayers(players);
-        playGame();
+        game.setPlayers(players);
+        game.playGame();
     }
 
-    @Override
     public void gameMenu(Player player, boolean[] actions) {
-        super.gameMenu(player, actions);
-
         int action = scan.nextInt();
         while (action < 1 || action > 7 || !actions[action - 1]) {
             System.out.println("Please write your actions correctly: ");
             action = scan.nextInt();
         }
 
-        actions(action, player, actions);
+        game.actions(action, player, actions);
     }
 
-    @Override
     public void getStreetOnBail(Player player) {
-        super.getStreetOnBail(player);
         String colour = scan.next();
-        super.setStreetOnBail(colour, player);
+        game.setStreetOnBail(colour, player);
     }
 
-    @Override
     public int checkAnswer(int a, int b) {
         try {
             int answer = scan.nextInt();
@@ -63,7 +60,6 @@ public class Console extends GameLogic {
         }
     }
 
-    @Override
     public void sendMessage(String message) {
         System.out.println(message);
     }
